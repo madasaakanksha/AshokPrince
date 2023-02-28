@@ -1,0 +1,32 @@
+pipeline {
+    agent any
+     
+    stages {
+        stage('one') {
+            steps {
+                echo "Ok"
+            }
+        }
+        stage('two') {
+            steps {
+                echo "Ok"
+            }
+        }
+        stage('three') {
+            steps {
+                echo "Ok"
+            }
+        }
+        stage('four') {
+            steps {
+                echo "Ok"
+            }
+        }
+    }
+    
+    post {
+        always {
+            emailext body: 'A Test EMail(6t)to check if its coming from gitsy', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+        }
+    }
+}
